@@ -2,18 +2,24 @@ import * as xlsx from 'xlsx'
 import * as React from 'react'
 
 const XlsxToJson = () => {
+
+  let newDate = new Date()
+  let day = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
+
  const [json, setJson] = React.useState([ { "Documento": "1111", "NomeCliente":"Teste", "ContaCapital":"1111111", "ValorIntegralizaçãoFolha": "222"} ])
 
- const StrictNumberChars = (str) => {
-    console.log(str)
-    while (str.length > 47){
+ const StrictNumberChars = (str, number) => {
+
+    while (str.length > number){
       str = str.slice(0, -1); 
    }
    
-   for(let i = str.length; i <= 47; ++i) {
+   for(let i = str.length; i <= number; ++i) {
      str += '\u00A0';
   }
-  console.log(str.length)
+
   return(
     `${str}`
   );
@@ -53,8 +59,7 @@ const XlsxToJson = () => {
              const sheetName = workbook.SheetNames[0];
              const worksheet = workbook.Sheets[sheetName];
              let jsonReturn = xlsx.utils.sheet_to_json(worksheet);
-             
-             console.log(jsonReturn)
+
              // Object.keys(jsonReturn).forEach(key=>{
              //  console.log(key ,jsonReturn[key]);
              // })
@@ -84,11 +89,17 @@ const XlsxToJson = () => {
       </form>
       <h1> Resultado: </h1>
       <div id='myInput'>
-       <table>
+       <table id='resultTable'>
+        <tr>
+          <th colSpan={6}>
+            {StrictNumberChars(`0175643810000000NOMEEMPRES\u00A0${day}${month}${year}0000`, 199)}
+          </th>
+        </tr> 
        {json.map((item) => (
+        <>
          <tr>
           <td key='MATRICULA/NOME'>
-          {StrictNumberChars(`1C000${item.ContaCapital}${item.NomeCliente}`)}
+          {StrictNumberChars(`1C000${item.ContaCapital}${item.NomeCliente}`, 47)}
           {`\u00A0\u00A0\u00A0`}
           </td>
           
@@ -109,8 +120,9 @@ const XlsxToJson = () => {
             {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
           </td>
         </tr>
+       </>
        ))}
-     </table>
+    </table>
 
     </div>
     </div>
