@@ -1,21 +1,41 @@
 import * as xlsx from 'xlsx'
 import * as React from 'react'
-import StrictNumberChars from './StrictNumberChars'
 
 const XlsxToJson = () => {
  const [json, setJson] = React.useState([ { "Exemplo": "Teste"} ])
 
  const StrictNumberChars = (str) => {
-
   for(let i = str.length; i <= 49; ++i) {
-   str += '_';
+   str += '\u00A0';
   }
-
   return(
-    <td>{`| ${str}`}</td>
+    `${str}`
   );
  }
+
+ const FormatValue = (value) => {
+  let floatValue = parseFloat(value).toFixed(2);
+  let stringValue = floatValue.toString();
+  for(let i = stringValue.length; i <= 17; ++i) {
+    stringValue = '0' + stringValue
+   }
+  let formatedValue = stringValue.replace('.','')
+
+  return (
+    `${formatedValue}`
+  )
+ }
+
+ const AddZeros = (value) => {
+  let stringValue = value.toString();
+  for(let i = stringValue.length; i <= 12; ++i) {
+    stringValue = '0' + stringValue;
+   }
   
+  return (
+    `\u00A0 \u00A0 ${stringValue}`
+  )
+ }
  
  const readUploadFile = (e) => {
      e.preventDefault();
@@ -60,17 +80,29 @@ const XlsxToJson = () => {
       <div id='myInput'>
        <table>
        <tr key={"header"}>
-         {Object.keys(json[0]).map((key) => (
-           <th >{key}</th>
-         ))}
+           <th> {`\u00A0 \u00A0 \u00A0 \u00A0\u00A0`} MATRICULA/NOME </th>
+           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0\u00A0 \u00A0 \u00A0 \u00A0 \u00A0`}</th>
+           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 `} CONTA CAPITAL </th>
+           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 `} VALOR </th>
        </tr>
        {json.map((item) => (
-         <tr key={item.id}>
-           {Object.values(item).map((val) => (
-             StrictNumberChars(val)
-             
-           ))}
-         </tr>
+         <tr>
+          <td key='MATRICULA/NOME'>
+          {StrictNumberChars(`${item.Documento}${item.NomeCliente}`)}
+          </td>
+          
+          <td key={'NONE'}>
+          {`00000000000000`}
+          </td>
+          
+          <td key={'MATRICULA'}>
+            {AddZeros(`${item.ContaCapital}`)}
+          </td>
+
+          <td key={'VALOR '}>
+            {FormatValue(`${item.ValorIntegralizaçãoFolha}`)}
+          </td>
+        </tr>
        ))}
      </table>
 
