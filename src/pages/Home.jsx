@@ -7,7 +7,7 @@ const Home = () => {
             const element = document.createElement("a");
             const file = new Blob([document.getElementById('myInput').innerText], {type: 'text/plain'});
             element.href = URL.createObjectURL(file);
-            element.download = "TestFile.txt";
+            element.download = "ResultFile.txt";
             document.body.appendChild(element); // Required for this to work in FireFox
             element.click();
         }, 1000);

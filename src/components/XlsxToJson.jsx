@@ -5,14 +5,15 @@ const XlsxToJson = () => {
  const [json, setJson] = React.useState([ { "Documento": "1111", "NomeCliente":"Teste", "ContaCapital":"1111111", "ValorIntegralizaçãoFolha": "222"} ])
 
  const StrictNumberChars = (str) => {
-
-  while (str.length > 50){
-    str = str.slice(0, -1); 
+    console.log(str)
+    while (str.length > 47){
+      str = str.slice(0, -1); 
+   }
+   
+   for(let i = str.length; i <= 47; ++i) {
+     str += '\u00A0';
   }
-
-  for(let i = str.length; i <= 48; ++i) {
-   str += '\u00A0';
-  }
+  console.log(str.length)
   return(
     `${str}`
   );
@@ -88,10 +89,12 @@ const XlsxToJson = () => {
          <tr>
           <td key='MATRICULA/NOME'>
           {StrictNumberChars(`1C000${item.ContaCapital}${item.NomeCliente}`)}
+          {`\u00A0\u00A0\u00A0`}
           </td>
           
           <td key={'NONE'}>
           {`00000000000000\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0  `}
+          
           </td>
           
           <td key={'MATRICULA'}>
@@ -103,7 +106,7 @@ const XlsxToJson = () => {
             {FormatValue(`${item.ValorIntegralizaçãoFolha}\u00A0\u00A0`)}
           </td>
           <td key={'LAST'}>
-            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
+            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
           </td>
         </tr>
        ))}
