@@ -4,9 +4,13 @@ import * as React from 'react'
 const XlsxToJson = () => {
 
   let newDate = new Date()
-  let day = newDate.getDate();
-  let month = newDate.getMonth() + 1;
-  let year = newDate.getFullYear();
+  let day = newDate.getDate()
+  let stringDay = day.toString()
+  if (stringDay.length < 2) stringDay = '0' + stringDay
+  let month = newDate.getMonth() + 1
+  let stringMonth = month.toString()
+  if (stringMonth.length < 2) stringMonth = '0' + stringMonth
+  let year = newDate.getFullYear()
 
  const [json, setJson] = React.useState([ { "Documento": "1111", "NomeCliente":"Teste", "ContaCapital":"1111111", "ValorIntegralizaçãoFolha": "222", "TotalLinhas": "3333", "ValorTotal":"44444444"}  ])
 
@@ -92,7 +96,7 @@ const XlsxToJson = () => {
        <table id='resultTable'>
         <tr>
           <th colSpan={6}>
-            {StrictNumberChars(`0175643810000000NOMEEMPRES\u00A0${day}${month}${year}0000`, 199)}
+            {StrictNumberChars(`0175643810000000NOMEEMPRES${stringDay}${stringMonth}${year}0000`, 199)}
           </th>
         </tr> 
        {json.map((item) => (
