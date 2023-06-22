@@ -10,7 +10,7 @@ const XlsxToJson = () => {
     str = str.slice(0, -1); 
   }
 
-  for(let i = str.length; i <= 49; ++i) {
+  for(let i = str.length; i <= 48; ++i) {
    str += '\u00A0';
   }
   return(
@@ -87,25 +87,28 @@ const XlsxToJson = () => {
        <tr key={"header"}>
            <th> {`\u00A0 \u00A0 \u00A0 \u00A0\u00A0`} MATRICULA/NOME </th>
            <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0\u00A0 \u00A0 \u00A0 \u00A0 \u00A0`}</th>
-           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 `} CONTA CAPITAL </th>
-           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 `} VALOR </th>
+           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`} MATRICULA </th>
+           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`} VALOR </th>
        </tr>
        {json.map((item) => (
          <tr>
           <td key='MATRICULA/NOME'>
-          {StrictNumberChars(`${item.Documento}${item.NomeCliente}`)}
+          {StrictNumberChars(`1C${item.ContaCapital}${item.NomeCliente}`)}
           </td>
           
           <td key={'NONE'}>
-          {`00000000000000`}
+          {`000000000000\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0  `}
           </td>
           
           <td key={'MATRICULA'}>
-            {AddZeros(`${item.ContaCapital}`)}
+            {AddZeros(`${item.ContaCapital}\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`)}
           </td>
 
           <td key={'VALOR '}>
-            {FormatValue(`${item.ValorIntegralizaçãoFolha}`)}
+            {FormatValue(`${item.ValorIntegralizaçãoFolha}\u00A0\u00A0`)}
+          </td>
+          <td key={'LAST'}>
+            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u000A`}
           </td>
         </tr>
        ))}
