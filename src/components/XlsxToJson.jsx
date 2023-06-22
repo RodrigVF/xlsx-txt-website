@@ -8,7 +8,7 @@ const XlsxToJson = () => {
   let month = newDate.getMonth() + 1;
   let year = newDate.getFullYear();
 
- const [json, setJson] = React.useState([ { "Documento": "1111", "NomeCliente":"Teste", "ContaCapital":"1111111", "ValorIntegralizaçãoFolha": "222"} ])
+ const [json, setJson] = React.useState([ { "Documento": "1111", "NomeCliente":"Teste", "ContaCapital":"1111111", "ValorIntegralizaçãoFolha": "222", "TotalLinhas": "3333", "ValorTotal":"44444444"}  ])
 
  const StrictNumberChars = (str, number) => {
 
@@ -38,14 +38,14 @@ const XlsxToJson = () => {
   )
  }
 
- const AddZeros = (value) => {
+ const AddZeros = (value, number) => {
   let stringValue = value.toString();
-  for(let i = stringValue.length; i <= 12; ++i) {
+  for(let i = stringValue.length; i <= number; ++i) {
     stringValue = '0' + stringValue;
    }
   
   return (
-    `\u00A0\u00A0${stringValue}`
+    `${stringValue}`
   )
  }
  
@@ -109,8 +109,8 @@ const XlsxToJson = () => {
           </td>
           
           <td key={'MATRICULA'}>
-            {AddZeros(`${item.ContaCapital}`)}
-            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
+            {AddZeros(`${item.ContaCapital}`,12)}
+            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
           </td>
 
           <td key={'VALOR '}>
@@ -122,8 +122,13 @@ const XlsxToJson = () => {
         </tr>
        </>
        ))}
+       <tr>
+        <td>
+          {StrictNumberChars(`9${AddZeros(json[0].TotalLinhas,26)}${FormatValue(json[0].ValorTotal)}`, 199)}
+        </td>
+       </tr>
     </table>
-
+    
     </div>
     </div>
  );
