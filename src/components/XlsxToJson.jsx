@@ -38,7 +38,7 @@ const XlsxToJson = () => {
    }
   
   return (
-    `\u00A0 \u00A0 ${stringValue}`
+    `\u00A0\u00A0${stringValue}`
   )
  }
  
@@ -93,22 +93,23 @@ const XlsxToJson = () => {
        {json.map((item) => (
          <tr>
           <td key='MATRICULA/NOME'>
-          {StrictNumberChars(`1C${item.ContaCapital}${item.NomeCliente}`)}
+          {StrictNumberChars(`1C000${item.ContaCapital}${item.NomeCliente}`)}
           </td>
           
           <td key={'NONE'}>
-          {`000000000000\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0  `}
+          {`00000000000000\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0  `}
           </td>
           
           <td key={'MATRICULA'}>
-            {AddZeros(`${item.ContaCapital}\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`)}
+            {AddZeros(`${item.ContaCapital}`)}
+            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
           </td>
 
           <td key={'VALOR '}>
             {FormatValue(`${item.ValorIntegralizaçãoFolha}\u00A0\u00A0`)}
           </td>
           <td key={'LAST'}>
-            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u000A`}
+            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
           </td>
         </tr>
        ))}
