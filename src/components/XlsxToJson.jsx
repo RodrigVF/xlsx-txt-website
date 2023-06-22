@@ -84,12 +84,6 @@ const XlsxToJson = () => {
       <h1> Resultado: </h1>
       <div id='myInput'>
        <table>
-       <tr key={"header"}>
-           <th> {`\u00A0 \u00A0 \u00A0 \u00A0\u00A0`} MATRICULA/NOME </th>
-           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0\u00A0 \u00A0 \u00A0 \u00A0 \u00A0`}</th>
-           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`} MATRICULA </th>
-           <th> {`\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`} VALOR </th>
-       </tr>
        {json.map((item) => (
          <tr>
           <td key='MATRICULA/NOME'>
