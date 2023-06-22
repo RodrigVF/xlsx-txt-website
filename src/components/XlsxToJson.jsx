@@ -2,9 +2,14 @@ import * as xlsx from 'xlsx'
 import * as React from 'react'
 
 const XlsxToJson = () => {
- const [json, setJson] = React.useState([ { "Exemplo": "Teste"} ])
+ const [json, setJson] = React.useState([ { "Documento": "1111", "NomeCliente":"Teste", "ContaCapital":"1111111", "ValorIntegralizaçãoFolha": "222"} ])
 
  const StrictNumberChars = (str) => {
+
+  while (str.length > 50){
+    str = str.slice(0, -1); 
+  }
+
   for(let i = str.length; i <= 49; ++i) {
    str += '\u00A0';
   }
