@@ -24,7 +24,7 @@ const XlsxToJson = () => {
    }
    
    for(let i = str.length; i <= number; ++i) {
-     str += '\u2002';
+     str += ' ';
   }
 
   return(
@@ -95,6 +95,8 @@ const XlsxToJson = () => {
       </form>
       <h1> Resultado: </h1>
       <div id='myInput'>
+      <pre>
+
        <table id='resultTable'>
         <tr>
           <th colSpan={6}>
@@ -104,27 +106,13 @@ const XlsxToJson = () => {
        {json.map((item) => (
         <>
          <tr>
-          <td key='MATRICULA/NOME'>
           {StrictNumberChars(`1C000${item.ContaCapital}${item.NomeCliente}`, 47)}
-          {`\u2002\u2002\u2002`}
-          </td>
-          
-          <td key={'NONE'}>
-          {`00000000000000\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002`}
-          
-          </td>
-          
-          <td key={'MATRICULA'}>
-            {AddZeros(`${item.ContaCapital}`,12)}
-            {`\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002`}
-          </td>
-
-          <td key={'VALOR '}>
-            {FormatValue(`${item.ValorIntegralizaçãoFolha}\u2002\u2002`)}
-          </td>
-          <td key={'LAST'}>
-            {`\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002`}
-          </td>
+          {`    `}
+          {`00000000000000          `}
+          {AddZeros(`${item.ContaCapital}`,12)}
+          {`                      `}
+          {FormatValue(`${item.ValorIntegralizaçãoFolha}   `)}
+          {`                                                                        `}
         </tr>
        </>
        ))}
@@ -134,6 +122,7 @@ const XlsxToJson = () => {
         </td>
        </tr>
     </table>
+    </pre>
     
     </div>
     </div>
