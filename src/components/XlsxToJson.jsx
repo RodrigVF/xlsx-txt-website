@@ -24,7 +24,7 @@ const XlsxToJson = () => {
    }
    
    for(let i = str.length; i <= number; ++i) {
-     str += '\u00A0';
+     str += '\u2002';
   }
 
   return(
@@ -70,8 +70,7 @@ const XlsxToJson = () => {
              // Object.keys(jsonReturn).forEach(key=>{
              //  console.log(key ,jsonReturn[key]);
              // })
-
-             var str = JSON.stringify(jsonReturn, null, 2); // spacing level = 2
+             //var str = JSON.stringify(jsonReturn, null, 2); // spacing level = 2
 
              setJson(jsonReturn)
              return (
@@ -107,24 +106,24 @@ const XlsxToJson = () => {
          <tr>
           <td key='MATRICULA/NOME'>
           {StrictNumberChars(`1C000${item.ContaCapital}${item.NomeCliente}`, 47)}
-          {`\u00A0\u00A0\u00A0`}
+          {`\u2002\u2002\u2002`}
           </td>
           
           <td key={'NONE'}>
-          {`00000000000000\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0  `}
+          {`00000000000000\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002`}
           
           </td>
           
           <td key={'MATRICULA'}>
             {AddZeros(`${item.ContaCapital}`,12)}
-            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
+            {`\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002`}
           </td>
 
           <td key={'VALOR '}>
-            {FormatValue(`${item.ValorIntegralizaçãoFolha}\u00A0\u00A0`)}
+            {FormatValue(`${item.ValorIntegralizaçãoFolha}\u2002\u2002`)}
           </td>
           <td key={'LAST'}>
-            {`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`}
+            {`\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002`}
           </td>
         </tr>
        </>
