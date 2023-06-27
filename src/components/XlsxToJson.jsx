@@ -108,9 +108,9 @@ const XlsxToJson = () => {
          <tr>
           {StrictNumberChars(`1C000${item.ContaCapital}${item.NomeCliente}`, 47)}
           {`    `}
-          {`00000000000000          `}
+          {`00000000000000            `}
           {AddZeros(`${item.ContaCapital}`,12)}
-          {`                      `}
+          {`                    `}
           {FormatValue(`${item.ValorIntegralizaçãoFolha}   `)}
           {`                                                                        `}
         </tr>
