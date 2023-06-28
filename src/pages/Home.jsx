@@ -15,12 +15,9 @@ const Home = () => {
 
  return(
     <div>
-    <pre>
-
         <h1>Arquivos</h1>
         <button onClick={jsonToTxT}>Baixar .txt</button>
         <XlsxToJson />
-    </pre>
     </div>
  );
 }
