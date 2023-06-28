@@ -96,7 +96,7 @@ const XlsxToJson = () => {
               {StrictNumberChars(`0175643810000000NOMEEMPRES0402${year}${stringMonth}${stringDay}`, 199)}
         {json.map((item) => (
           <pre>
-            {StrictNumberChars(`1C${AddZeros(item.ContaCapital,10)}${item.NomeCliente}`, 47)}
+            {StrictNumberChars(`1C${AddZeros(item.ContaCapital,9)}${item.NomeCliente}`, 47)}
             {`    `}
             {`00000000000000            `}
             {AddZeros(`${item.ContaCapital}`,12)}
