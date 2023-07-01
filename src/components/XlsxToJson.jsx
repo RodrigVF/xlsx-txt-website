@@ -106,7 +106,7 @@ const XlsxToJson = () => {
           </pre>
           ))}
             {StrictNumberChars(`9${AddZeros(json[0].TotalLinhas,26)}${FormatValue(json[0].ValorTotal)}`, 199)}
-            {``}
+            {`\u000A`}
       </pre>   
     </div>
   </div>
