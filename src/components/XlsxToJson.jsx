@@ -52,7 +52,29 @@ const XlsxToJson = () => {
     `${stringValue}`
   )
  }
- 
+
+ const MapValues = () => {
+  try {
+    return(
+      json.map((item) => (
+        <pre>
+        {StrictNumberChars(`1C${AddZeros(item.ContaCapital,9)}${item.NomeCliente}`, 47)}
+        {`    `}
+        {`00000000000000            `}
+        {AddZeros(`${item.ContaCapital}`,12)}
+        {`                    `}
+        {FormatValue(`${item.ValorIntegralizaçãoFolha}   `)}
+        {`                                                                        `}
+        </pre>
+        ))
+    )} catch (error) {
+      console.error(error); // You might send an exception to your error tracker like AppSignal
+      return (
+        <p> Alguma informação do arquivo pode estar faltando ou inserido incorretamente, favor verificar</p>
+      )
+    }
+   }
+
  const readUploadFile = (e) => {
      e.preventDefault();
      if (e.target.files) {
@@ -93,18 +115,10 @@ const XlsxToJson = () => {
       <h1> Resultado: </h1>
       <div id='myInput'>
         <pre>
-              {StrictNumberChars(`0175643810000000NOMEEMPRES0402${year}${stringMonth}${stringDay}`, 199)}
-        {json.map((item) => (
-          <pre>
-            {StrictNumberChars(`1C${AddZeros(item.ContaCapital,9)}${item.NomeCliente}`, 47)}
-            {`    `}
-            {`00000000000000            `}
-            {AddZeros(`${item.ContaCapital}`,12)}
-            {`                    `}
-            {FormatValue(`${item.ValorIntegralizaçãoFolha}   `)}
-            {`                                                                        `}
-          </pre>
-          ))}
+            {StrictNumberChars(`0175643810000000NOMEEMPRES0402${year}${stringMonth}${stringDay}`, 199)}
+
+            {MapValues()}
+            
             {StrictNumberChars(`9${AddZeros(json[0].TotalLinhas,26)}${FormatValue(json[0].ValorTotal)}`, 199)}
             {`\u000A`}
       </pre>   
